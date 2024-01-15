@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&display=swap" rel="stylesheet">
+    <title>Quizz Géographie</title>
+
+</head>
+<body>
+    <header id="header">
+        <h1 id="header-title">Mohamed Amine Zaidi</h1>
+        <nav id="navbar">
+            <ul>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="index.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Home
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../index.html" href="#accueil" class="nav-link">Accueil</a></li>
+                        <li><a href="../index.html" href="#biographie"  class="nav-link">Biographie</a></li>
+                        <li><a href="../index.html"  href="#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                  </li>
+                
+                <li>
+                    <a href="../Pages/parcours.html" class="nav-link"> Parcours</a>
+                </li>
+                <li><a href="../Pages/Compétence.html" class="nav-link"> Compétences</a></li>
+                <li><a href="../Pages/Stage.html" class="nav-link"> Stage</a></li>
+                <li><a href="../Pages/Evenement.html" class="nav-link"> Evenement</a></li>
+                <li><a href="../Pages/Matiers.html" class="nav-link"> Matiers</a></li>
+                <li> <a href="../Pages/Passions.html" class="nav-link"> Passions</a></li>
+                <li><a href="../Pages/iit.html" class="nav-link"> IIT</a></li>
+                <li> <a href="../Pages/Contact.html" class="nav-link"> Contact</a></li>
+                <li><a href="../Pages/Quiz.html" class="nav-link"> Quiz</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+
+
+
+<div class="titre">
+      
+    <h1>Quizz sur web </h1>
+    
+        </div>
+
+        <section class="quisWeb">
+
+        
+<form id="QuizForm">
+    <!-- question1  -->
+    <label for="q1">1)Qu'est-ce que signifie l'acronyme "HTML"?</label>
+    <input type="text" id="q1" name="q1" required>
+
+    <!-- question 2 -->
+    <label for="q2">2)Qu'est-ce que signifie l'acronyme "CSS"?</label>
+    <input type="text" id="q2" name="q2" required>
+    <!-- question3 -->
+    <label for="q3">3)Qu'est-ce que signifie l'acronyme "JS"?</label>
+    <input type="text" id="q3" name="q3" required>
+    <!-- question4 -->
+    <label for="q4"> 4)Quel langage de programmation est souvent utilisé pour le développement côté serveur?</label>
+    <input type="text" id="q4" name="q4" required>
+    <!-- question5 -->
+    <label for="q5">5)Qu'est-ce que signifie l'acronyme "URL"?</label>
+    <input type="text" id="q5" name="q5" required>
+    <!-- question6 -->
+    <label for="q6">6)Quelle balise HTML est utilisée pour structurer le contenu d'une page web?</label>
+    <input type="text" id="q6" name="q6" required>
+    <!-- question7 -->
+    <label for="q7">7)Quelle balise HTML est utilisée pour créer un lien hypertexte?</label>
+    <input type="text" id="q7" name="q7" required>
+     <!-- question8 -->
+     <label for="q8">8)Quel format de fichier est utilisé pour les feuilles de style CSS?</label>
+     <input type="text" id="q8" name="q8" required>
+     <!-- question9 -->
+     <label for="q9">9) Quel attribut HTML est utilisé pour spécifier une image dans une balise <img>?</label>
+     <input type="text" id="q9" name="q9" required>
+     <!-- question10 -->
+     <label for="q10"> 10)Quel type de langage est JavaScript? <img>?</label>
+     <input type="text" id="q10" name="q10" required>
+    <br>
+
+    <button type="button" onclick="calculateScore()"  class="animated-button1"> 
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Valider</button>
+</form>
+</section>
+
+<div id="result"></div>
+
+<script>
+    function calculateScore() {
+        let score = 0;
+        let correctAnswers = [];
+
+        // Ajoutez ici les réponses correctes pour chaque question
+        const correctAnswersMap = {
+            q1: "HyperText Markup Language",
+            q2:"Cascading Style Sheets",
+            q3:"JavaScript",
+            q4:"PHP",
+            q5: "Universal Resource Locator",
+            q6:"body",
+            q7:"a",
+            q8:".css",
+            q9:"src",
+            q10:"Langage de programmation côté client",
+
+
+
+
+   
+        };
+
+        // Parcourez les réponses fournies par l'utilisateur
+        for (const question in correctAnswersMap) {
+
+            const userAnswer = document.getElementById(question).value.trim();
+            const correctAnswer = correctAnswersMap[question];
+
+            // Vérifiez si la réponse de l'utilisateur est correcte
+            if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+                score++;
+            }
+
+            // Enregistrez les réponses correctes
+            correctAnswers.push(`<li>${question}: ${correctAnswer}</li>`);
+        }
+
+        // Affichez le résultat
+        const resultDiv = document.getElementById('result');
+        resultDiv.innerHTML = `<h2>Votre score est de ${score}/${Object.keys(correctAnswersMap).length}</h2><ul>${correctAnswers.join('')}</ul>`;
+    }
+</script>
+</main>
+<footer id="about">
+    <hr>
+    <p>&copy;Zaidi Mohamed Amine</p>
+    <span>Studing Computer Science And Engineering</span>
+</footer>
+
+</body>
+</html>
